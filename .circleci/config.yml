@@ -49,7 +49,7 @@ workflows:
     jobs:
       - run_replay_job:
           context:
-            - node-benchmarking
+            - react-benchmarking
           filters:
             branches:
               only: main
