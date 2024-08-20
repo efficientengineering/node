@@ -319,7 +319,7 @@ def push_commits_one_by_one(args, repo, commits):
 
       config_path = args['config_path']
       main_tree = repo.heads.main.commit.tree
-
+      
       folders_from_main = {}
       for folder in [config_path]:
           for item in main_tree.traverse():
@@ -327,7 +327,9 @@ def push_commits_one_by_one(args, repo, commits):
                   folders_from_main[item.path] = BytesIO(item.data_stream.read()).getvalue()
 
       repo.head.reset(commit=commit, index=True, working_tree=True)
-
+      shutil.copyfile(os.path.join(args['working_repo_dir'], config_path, '.gitignore_benchmark'), os.path.join(args['working_repo_dir'], '.gitignore'))
+      repo.git.add('.')
+      repo.index.commit("Committing gitignore")
       for path, data in folders_from_main.items():
           if os.path.exists(path):
               os.remove(path)
