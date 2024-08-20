@@ -17,6 +17,7 @@ jobs:
       GITHUB_REPO_SLUG: node
       SHEETS_JOB_TAB: node_job_data
       SHEETS_WORKFLOW_TAB: node_workflow_data
+      CONFIG_PATH: configs/
     steps:
       - checkout
       - run:
