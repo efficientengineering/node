@@ -93,7 +93,7 @@ def load_logging_config(debug, file_path):
                 "class": "logging.FileHandler",
                 "formatter": "debugFormater",
                 "level": "DEBUG",
-                "filename": "benchmark.log"
+                "filename": "/tmp/benchmark.log"
             },
             "console": {
                 "class": "logging.StreamHandler",
