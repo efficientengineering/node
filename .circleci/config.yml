@@ -12,7 +12,7 @@ jobs:
       - image: cimg/python:3.12
     resource_class: small
     environment:
-      UPSTREAM_REPO: https://github.com/efficientengineering/node.git
+      UPSTREAM_REPO: https://github.com/nodejs/node.git
       CIRCLECI_PROJECT_SLUG: 5229f496-fe42-48f4-adf2-eff434754c40
       GITHUB_REPO_SLUG: node
       SHEETS_JOB_TAB: node_job_data
