@@ -28,7 +28,7 @@ jobs:
       - run:
           name: Install Python Requirements
           command: pip install -r requirements.txt
-      - run: ls ./configs/
+      - run: ls -la ./configs/
       - run:
           name: Run Replay Script
           # Add --branch branch_name to customize the branch used
