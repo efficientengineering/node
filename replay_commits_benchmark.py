@@ -327,6 +327,7 @@ def push_commits_one_by_one(args, repo, commits):
                   folders_from_main[item.path] = BytesIO(item.data_stream.read()).getvalue()
 
       repo.head.reset(commit=commit, index=True, working_tree=True)
+      print("dirs: ", os.listdir('./configs/'))
       shutil.move('./configs/.gitignore_benchmark', './.gitignore')
       repo.git.add('.')
       repo.index.commit("Committing gitignore")
