@@ -12,12 +12,11 @@ jobs:
       - image: cimg/python:3.12
     resource_class: small
     environment:
-      UPSTREAM_REPO: https://github.com/nodejs/node.git
+      UPSTREAM_REPO: https://github.com/efficientengineering/node.git
       CIRCLECI_PROJECT_SLUG: circleci/2kyypsSagUFgyThixm7xs5/B9Ty4ACJV8GDsNZU88C5sM
       GITHUB_REPO_SLUG: efficientengineering/node
       SHEETS_JOB_TAB: node_job_data
       SHEETS_WORKFLOW_TAB: node_workflow_data
-      CONFIG_PATH: configs/
     steps:
       - checkout
       - run:
