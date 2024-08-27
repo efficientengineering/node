@@ -13,7 +13,7 @@ jobs:
     resource_class: small
     environment:
       UPSTREAM_REPO: https://github.com/nodejs/node.git
-      CIRCLECI_PROJECT_SLUG: 5229f496-fe42-48f4-adf2-eff434754c40
+      CIRCLECI_PROJECT_SLUG: circleci/2kyypsSagUFgyThixm7xs5/B9Ty4ACJV8GDsNZU88C5sM
       GITHUB_REPO_SLUG: efficientengineering/node
       SHEETS_JOB_TAB: node_job_data
       SHEETS_WORKFLOW_TAB: node_workflow_data
