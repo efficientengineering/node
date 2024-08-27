@@ -17,6 +17,7 @@ from pathlib import Path
 from time import sleep
 from copy import deepcopy
 from concurrent.futures import ThreadPoolExecutor
+import shutil
 
 LOGGER = logging.getLogger(__name__)
 
@@ -63,8 +64,8 @@ def main():
     # Parse the arguments passed in
     args = get_args()
 
-    # Configure logging
-    load_logging_config(args["debug"], args["log_path"])
+    # # Configure logging
+    # load_logging_config(args["debug"], args["log_path"])
 
     LOGGER.debug("Parsed arguments successfully!")
     run(parsed_args=args)
@@ -93,7 +94,7 @@ def load_logging_config(debug, file_path):
                 "class": "logging.FileHandler",
                 "formatter": "debugFormater",
                 "level": "DEBUG",
-                "filename": "/tmp/benchmark.log"
+                "filename": "benchmark.log"
             },
             "console": {
                 "class": "logging.StreamHandler",
@@ -319,7 +320,7 @@ def push_commits_one_by_one(args, repo, commits):
 
       config_path = args['config_path']
       main_tree = repo.heads.main.commit.tree
-      
+
       folders_from_main = {}
       for folder in [config_path]:
           for item in main_tree.traverse():
@@ -327,13 +328,10 @@ def push_commits_one_by_one(args, repo, commits):
                   folders_from_main[item.path] = BytesIO(item.data_stream.read()).getvalue()
 
       repo.head.reset(commit=commit, index=True, working_tree=True)
-      print("dirs: ", os.listdir('./configs/'))
-      shutil.move('./configs/.gitignore_benchmark', './.gitignore')
-      repo.git.add('.')
-      repo.index.commit("Committing gitignore")
+
       for path, data in folders_from_main.items():
           if os.path.exists(path):
-              os.remove(path)
+              shutil.rmtree(path)
           export_blob(data, path)
 
       for folder in [".circleci", ".github"]:
