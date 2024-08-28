@@ -22,6 +22,8 @@
 !.nycrc
 !.yamllint.yaml
 !configs/.circleci
+!configs/.github
+!configs/.gitignore_benchmark
 
 # === Rules for root dir ===
 /core
